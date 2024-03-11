@@ -15,17 +15,12 @@ body {
   align-items: center;
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
 #time-container {
   background-color: #fff;
   font-size: 40px;
   font-weight: 600;
   padding: 12px 40px;
+  margin-bottom: 20px;
   border-radius: 6px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
