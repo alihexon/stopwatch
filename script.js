@@ -37,6 +37,7 @@ function startTimer() {
 }
 
 function stopTimer() {
+  isTimerActive = false;
   clearInterval(timer)
 }
 
