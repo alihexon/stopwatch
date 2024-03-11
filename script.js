@@ -1,8 +1,5 @@
 let timer;
 let isTimerActive = false;
-let hour = 0;
-let minute = 0;
-let second = 0;
 
 const display = document.querySelector('.display');
 const startButton = document.querySelector('.start-btn');
@@ -13,17 +10,21 @@ startButton.addEventListener('click', startTimer);
 stopButton.addEventListener('click', stopTimer);
 resetButton.addEventListener('click', resetTimer);
 
-function updateTimer() {
-  second++;
+const time = (JSON.parse(localStorage.getItem('time'))) || { hour: 0, minute: 0, second: 0 };
+display.innerHTML = `${time.hour.toString().padStart(2, '0')}:${time.minute.toString().padStart(2, '0')}:${time.second.toString().padStart(2, '0')}`;
 
-  if (second === 60) {
-    second = 0;
-    minute++;
-  } if (minute === 60) {
-    minute = 0;
-    hour++;
+function updateTimer() {
+  time.second++;
+
+  if (time.second === 60) {
+    time.second = 0;
+    time.minute++;
+  } if (time.minute === 60) {
+    time.minute = 0;
+    time.hour++;
   }
-  display.innerHTML = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}:${second.toString().padStart(2, '0')}`;
+  display.innerHTML = `${time.hour.toString().padStart(2, '0')}:${time.minute.toString().padStart(2, '0')}:${time.second.toString().padStart(2, '0')}`;
+  localStorage.setItem('time', JSON.stringify(time));
 }
 
 function startTimer() {
@@ -43,8 +44,8 @@ function stopTimer() {
 
 function resetTimer() {
   clearInterval(timer);
-  hour = 0;
-  minute = 0;
-  second = 0;
+  time.hour = 0;
+  time.minute = 0;
+  time.second = 0;
   display.innerText = '00:00:00'
 }
