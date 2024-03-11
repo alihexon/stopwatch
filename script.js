@@ -1,4 +1,5 @@
 let timer;
+let isTimerActive = false;
 let hour = 0;
 let minute = 0;
 let second = 0;
@@ -14,6 +15,7 @@ resetButton.addEventListener('click', resetTimer);
 
 function updateTimer() {
   second++;
+
   if (second === 60) {
     second = 0;
     minute++;
@@ -25,7 +27,13 @@ function updateTimer() {
 }
 
 function startTimer() {
- timer = setInterval(updateTimer, 1000)
+  if  (isTimerActive === true) {
+    alert("The stopwatch is already active.");
+    return
+  };
+
+  isTimerActive = true;
+  timer = setInterval(updateTimer, 1000)
 }
 
 function stopTimer() {
