@@ -51,6 +51,7 @@ function resetTimer() {
   time.second = 0;
   display.innerText = "00:00:00";
   isTimerActive = false;
+  localStorage.setItem("time", JSON.stringify(time));
 }
 
 startButton.addEventListener("click", startTimer);
