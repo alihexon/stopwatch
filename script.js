@@ -6,18 +6,11 @@ const startButton = document.querySelector(".start-btn");
 const stopButton = document.querySelector(".stop-btn");
 const resetButton = document.querySelector(".reset-btn");
 
-startButton.addEventListener("click", startTimer);
-stopButton.addEventListener("click", stopTimer);
-resetButton.addEventListener("click", resetTimer);
-
 const time = JSON.parse(localStorage.getItem("time")) || {
   hour: 0,
   minute: 0,
   second: 0,
 };
-display.innerHTML = `${time.hour.toString().padStart(2, "0")}:${time.minute
-  .toString()
-  .padStart(2, "0")}:${time.second.toString().padStart(2, "0")}`;
 
 function updateTimer() {
   time.second++;
@@ -59,3 +52,11 @@ function resetTimer() {
   display.innerText = "00:00:00";
   isTimerActive = false;
 }
+
+startButton.addEventListener("click", startTimer);
+stopButton.addEventListener("click", stopTimer);
+resetButton.addEventListener("click", resetTimer);
+
+display.innerHTML = `${time.hour.toString().padStart(2, "0")}:${time.minute
+  .toString()
+  .padStart(2, "0")}:${time.second.toString().padStart(2, "0")}`;
