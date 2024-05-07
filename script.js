@@ -12,6 +12,10 @@ const time = JSON.parse(localStorage.getItem("time")) || {
   second: 0,
 };
 
+display.innerHTML = `${time.hour.toString().padStart(2, "0")}:${time.minute
+  .toString()
+  .padStart(2, "0")}:${time.second.toString().padStart(2, "0")}`;
+
 function updateTimer() {
   time.second++;
 
@@ -57,7 +61,3 @@ function resetTimer() {
 startButton.addEventListener("click", startTimer);
 stopButton.addEventListener("click", stopTimer);
 resetButton.addEventListener("click", resetTimer);
-
-display.innerHTML = `${time.hour.toString().padStart(2, "0")}:${time.minute
-  .toString()
-  .padStart(2, "0")}:${time.second.toString().padStart(2, "0")}`;
